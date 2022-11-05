@@ -25,27 +25,35 @@ function Contact() {
             <h1 className="text-[36px] font-bold mb-2">Contact Me</h1>
             <p className='text-[20px] mb-5 text-[#475467] '>Hi there, contact me to ask me about anything you have in mind.</p>
             <div className="flex mt-6 flex-col md:flex-row justify-between">  
-                <div className="md:w-[48%] w-full">
-                    <label htmlFor="first__name" >First Name</label>
-                    <input
-                    id="first__name"
-                    type="text"
-                    className="block border border-grey-light w-full  outline-[#84CAFF] outline-4 p-2 rounded-[8px] mb-4"
-                    name="firstName"
-                    placeholder="Enter your first name"
-                    />
-                </div>          
+              <div className="md:w-[48%] w-full">
+                <label htmlFor="first__name" >First Name</label>
+                <input
+                id="first__name"
+                type="text"
+                className="block border border-grey-light w-full  outline-[#84CAFF] outline-4 p-2 rounded-[8px] mb-3"
+                name="firstName"
+                placeholder="Enter your first name" 
+                {...formik.getFieldProps("firstName")}
+                />
+                {formik.touched.firstName && formik.errors.firstName ? (
+                  <div className="text-red-500 ">{formik.errors.firstName}</div>
+                ) : null}
+              </div>          
 
-                <div className="md:w-[48%] w-full">
-                    <label htmlFor="last__name" >Last Name</label>
-                    <input
-                    id="last__name"
-                    type="text"
-                    className="block border border-grey-light w-full  outline-[#84CAFF] outline-4 p-2 rounded-[8px] mb-4"
-                    name="lastName"
-                    placeholder="Enter your last name"
-                    />
-                </div>
+              <div className="md:w-[48%] w-full">
+                <label htmlFor="last__name" >Last Name</label>
+                <input
+                id="last__name"
+                type="text"
+                className="block border border-grey-light w-full  outline-[#84CAFF] outline-4 p-2 rounded-[8px] mb-3"
+                name="lastName"
+                placeholder="Enter your last name"
+                {...formik.getFieldProps("lastName")}
+                />
+              {formik.touched.lastName && formik.errors.lastName ? (
+                <div className="text-red-500 ">{formik.errors.lastName}</div>
+              ) : null}
+              </div>
             </div>
 
             <label htmlFor="email" >Email</label>           
@@ -57,7 +65,11 @@ function Contact() {
               className="block border border-grey-light w-full outline-[#84CAFF] outline-4 p-2 rounded-[8px] mb-4   "
               name="email"
               placeholder="yourname@email.com"
+              {...formik.getFieldProps("email")}
             />
+             {formik.touched.email && formik.errors.email ? (
+                <div className="text-red-500 ">{formik.errors.email}</div>
+              ) : null}
            
             <label htmlFor="message" >Message</label>
             <textarea
