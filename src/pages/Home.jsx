@@ -1,5 +1,5 @@
 import React from 'react'
-import User from './Component/User'
+import User from '../Component/User'
 
 const Home = () => {
   return (

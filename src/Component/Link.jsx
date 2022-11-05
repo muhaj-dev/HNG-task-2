@@ -33,6 +33,11 @@ const weblinks = [
         weblink: "https://books.zuri.team/design-rules",
         id: "book__design"
       },
+      {
+        name: "Contact Me",
+        weblink: "contact",
+        id: "contact"
+      },
   ];
 
 const Link = () => {
