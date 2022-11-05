@@ -1,99 +1,100 @@
-import React from "react";
+
+import React,{useState} from "react";
+import validate from "../Component/Validate";
 import { useFormik } from "formik";
 
-function MyForm() {
+function Contact() {
+    const [inputVal, setInputVal] = useState('')
+    const [email, setEmail] = useState('')
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
       email: "",
-      password: "",
-      Vpassword: "",
     },
-    onSubmit: () => {
-      console.log();
+    validate,
+    onSubmit: (values) => {
+      console.log(JSON.stringify(values, null, 2));
     },
   });
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="bg-grey-lighter min-h-screen flex flex-col">
-        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-          <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-            <h1 className="mb-8 text-3xl text-center">Registration 🚀</h1>
-            <input
-              type="text"
-              className="block border border-grey-light w-full p-3 rounded mb-4"
-              name="firstName"
-              placeholder="First Name"
-              {...formik.getFieldProps("firstName")}
-            />
+        <div className=" max-w-[720px] w-[95%] mx-auto flex-1 flex flex-col items-center justify-center px-2">
+          <div className="bg-white  py-8 rounded  text-black w-full">
+            <h1 className="text-[36px] font-bold mb-2">Contact Me</h1>
+            <p className='text-[20px] mb-5 text-[#475467] '>Hi there, contact me to ask me about anything you have in mind.</p>
+            <div className="flex mt-6 flex-col md:flex-row justify-between">  
+                <div className="md:w-[48%] w-full">
+                    <label htmlFor="first__name" >First Name</label>
+                    <input
+                    id="first__name"
+                    type="text"
+                    className="block border border-grey-light w-full  outline-[#84CAFF] outline-4 p-2 rounded-[8px] mb-4"
+                    name="firstName"
+                    placeholder="Enter your first name"
+                    />
+                </div>          
 
-            <input
-              type="text"
-              className="block border border-grey-light w-full p-3 rounded mb-4"
-              name="lastName"
-              placeholder="Last Name"
-              {...formik.getFieldProps("lastName")}
-            />
+                <div className="md:w-[48%] w-full">
+                    <label htmlFor="last__name" >Last Name</label>
+                    <input
+                    id="last__name"
+                    type="text"
+                    className="block border border-grey-light w-full  outline-[#84CAFF] outline-4 p-2 rounded-[8px] mb-4"
+                    name="lastName"
+                    placeholder="Enter your last name"
+                    />
+                </div>
+            </div>
 
+            <label htmlFor="email" >Email</label>           
             <input
-              type="text"
-              className="block border border-grey-light w-full p-3 rounded mb-4"
+                id='email'
+              type="email"
+              value={email} 
+              onChange={e => setEmail(e.target.value)}
+              className="block border border-grey-light w-full outline-[#84CAFF] outline-4 p-2 rounded-[8px] mb-4   "
               name="email"
-              placeholder="Email"
-              {...formik.getFieldProps("email")}
+              placeholder="yourname@email.com"
             />
-
-            <input
-              type="password"
-              className="block border border-grey-light w-full p-3 rounded mb-4"
-              name="password"
-              placeholder="Password (5 characters and above)"
-              {...formik.getFieldProps("password")}
-            />    
-
-            <input
-              type="password"
-              className="block border border-grey-light w-full p-3 rounded mb-4"
-              name="Vpassword"
-              placeholder="Confirm Password"
-              {...formik.getFieldProps("Vpassword")}
+           
+            <label htmlFor="message" >Message</label>
+            <textarea
+            id="message"
+              type="text"
+              value={inputVal} 
+              onChange={e => setInputVal(e.target.value)}
+                rows="4"
+                className={`block border border-grey-light w-full  p-2 outline-none border-b-3  
+              rounded-[8px] mb-1 focus:border-[#84CAFF] ${
+                formik.errors.message ? "border-red-500 " : ""
+              }`}
+              name="message"
+              placeholder="Send me a message and I'll reply you as soon as possible..."
+              {...formik.getFieldProps("message")}
             />
+            {formik.touched.message && formik.errors.message ? (
+              <div className="text-red-500 " >{formik.errors.message}</div>
+            ) : null}
 
+            <div className="flex items-center">
+                <input
+                    id="default-checkbox"
+                    type="checkbox"
+                    className="w-4 mt-3 h-4 rounded color-white accent-blue-200 hover:border-solid hover:border-4  hover:border-[#84CAFF]"
+                />
+                <p className="ml-3 mt-3">You agree to providing your  data to who may contact you.</p>
+            </div>
             <button
               type="submit"
-              className="w-full text-center py-3 rounded bg-green-600 text-white hover:bg-green-dark focus:outline-none my-1"
+                className={`w-full text-center mt-6 py-3 rounded-[8px] bg-[#1570EF] text-white hover:bg-green-dark focus:outline-2 my-1 ${
+                    !formik.touched.message  ? "opacity-50  " : "bg-[#175CD3]"
+                }`}
             >
-              Create Account 🚀
+              Send message
             </button>
-
-            <div className="text-center text-sm text-grey-dark mt-4">
-              By signing up, you agree to the
-              <a
-                className="no-underline border-b border-grey-dark text-grey-dark"
-                href="#"
-              >
-                Terms of Service
-              </a>{" "}
-              and{" "}
-              <a
-                className="no-underline border-b border-grey-dark text-grey-dark"
-                href="#"
-              >
-                Privacy Policy
-              </a>
-            </div>
-          </div>
-
-          <div className="text-grey-dark mt-6">
-            Already have an account?
-            <a
-              className="no-underline border-b border-blue text-blue"
-              href="../login/"
-            >
-              Log in
-            </a>
-            .
           </div>
         </div>
       </div>
@@ -101,4 +102,4 @@ function MyForm() {
   );
 }
 
-export default MyForm;
+export default Contact;
