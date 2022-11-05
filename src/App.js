@@ -10,7 +10,7 @@ function App() {
     <div>
       <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} />
       </Routes>
       <div className="w-[90%]  mx-auto">
         <Footer />
