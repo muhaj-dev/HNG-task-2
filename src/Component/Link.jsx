@@ -53,14 +53,6 @@ const Link = () => {
                 </a>
             </div>
         )}
-        <div className='links'>
-          <a 
-            id='contact' 
-            href="/contact"
-          >
-            Contact Me
-          </a>
-        </div>
     </div>
   )
 }
