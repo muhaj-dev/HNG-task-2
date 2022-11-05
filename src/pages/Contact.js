@@ -94,7 +94,7 @@ function Contact() {
                 <input
                     id="default-checkbox"
                     type="checkbox"
-                    className="w-4 mt-3 h-4 rounded color-white accent-blue-200 hover:border-solid hover:border-4  hover:border-[#84CAFF]"
+                    className="w-4 mt-3 h-4 rounded color-white hover:border-solid hover:border-4  hover:border-[#84CAFF]"
                 />
                 <p className="ml-3 mt-3">You agree to providing your  data to who may contact you.</p>
             </div>
