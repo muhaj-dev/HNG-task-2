@@ -35,7 +35,7 @@ const weblinks = [
       },
       {
         name: "Contact Me",
-        weblink: "contact",
+        weblink: "/contact",
         id: "contact"
       },
   ];
