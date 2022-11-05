@@ -11,7 +11,6 @@ const User = () => {
       <Profileuser />
       <Link />
       <Social />
-      <Footer />
     </div>
   )
 }
