@@ -35,7 +35,7 @@ const weblinks = [
       },
       {
         name: "Contact Me",
-        weblink: "/contact",
+        weblink: "contact",
         id: "contact"
       },
   ];
@@ -56,7 +56,7 @@ const Link = () => {
         <div className='links'>
           <a 
             id='contact' 
-            href="/contact"
+            href="contact"
           >
             Contact Me
           </a>
