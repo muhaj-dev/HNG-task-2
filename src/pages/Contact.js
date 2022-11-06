@@ -99,6 +99,7 @@ function Contact() {
                 <p className="ml-3 mt-3">You agree to providing your  data to who may contact you.</p>
             </div>
             <button
+            id="btn__submit"
               type="submit"
                 className={`w-full text-center mt-6 py-3 rounded-[8px] bg-[#1570EF] text-white hover:bg-green-dark focus:outline-2 my-1 ${
                     !formik.touched.message  ? "opacity-50  " : "bg-[#175CD3]"
